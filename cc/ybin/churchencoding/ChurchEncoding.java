@@ -67,18 +67,4 @@ public class ChurchEncoding {
         return (F<T> f, T x) -> m.apply(
                         (T xx) -> n.apply(f, xx), x);
     }
-
-    public static <T> Numb<T> sub(Numb<T> m, Numb<T> n) {
-        return new Numb<T>() {
-            public T apply(F<T> f, T x) {
-                F<Numb<T>> pred = new F<Numb<T>>() {
-                    public Numb<T> apply(Numb<T> nn) {
-                        return nn;
-                    }
-                };
-
-                return n.apply((Numb<T> nn) -> pred.apply(nn), m);
-            }
-        };
-    }
 }
